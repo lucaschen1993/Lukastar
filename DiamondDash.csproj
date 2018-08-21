@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{581EF96F-1CC3-9556-7713-0821ECD6E055}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
+    <UnityVersion>2017.2.0f3</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion>4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_2_0;UNITY_2017_2;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_2_0;UNITY_2017_2;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEditor">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UNETModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UNETModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WebModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.WebModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StyleSheetsModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.StyleSheetsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticlesLegacyModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ParticlesLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>E:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIAutomation">
+      <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GoogleAudioSpatializer">
+      <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>E:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>Assets/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>Assets/DOTween/DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>Assets/DOTween/DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>C:/Users/35900/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>C:/Users/35900/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>E:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>E:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Scripts\AnimationManager.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Jewel.cs" />
+    <Compile Include="Assets\Scripts\JewelsManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\DOTween\DOTween.XML" />
+    <None Include="Assets\DOTween\DOTween43.xml" />
+    <None Include="Assets\DOTween\DOTween46.xml" />
+    <None Include="Assets\DOTween\DOTween50.xml" />
+    <None Include="Assets\DOTween\Editor\DOTweenEditor.XML" />
+    <None Include="Assets\DOTween\readme.txt" />
+    <None Include="Assets\Fonts\Textured Text Shader.shader" />
+    <None Include="Assets\Resources\Data.txt" />
+    <None Include="Assets\Resources\Maps\1.txt" />
+    <None Include="Assets\Resources\Maps\10.txt" />
+    <None Include="Assets\Resources\Maps\100.txt" />
+    <None Include="Assets\Resources\Maps\101.txt" />
+    <None Include="Assets\Resources\Maps\102.txt" />
+    <None Include="Assets\Resources\Maps\103.txt" />
+    <None Include="Assets\Resources\Maps\104.txt" />
+    <None Include="Assets\Resources\Maps\105.txt" />
+    <None Include="Assets\Resources\Maps\106.txt" />
+    <None Include="Assets\Resources\Maps\107.txt" />
+    <None Include="Assets\Resources\Maps\108.txt" />
+    <None Include="Assets\Resources\Maps\109.txt" />
+    <None Include="Assets\Resources\Maps\11.txt" />
+    <None Include="Assets\Resources\Maps\110.txt" />
+    <None Include="Assets\Resources\Maps\111.txt" />
+    <None Include="Assets\Resources\Maps\112.txt" />
+    <None Include="Assets\Resources\Maps\113.txt" />
+    <None Include="Assets\Resources\Maps\114.txt" />
+    <None Include="Assets\Resources\Maps\115.txt" />
+    <None Include="Assets\Resources\Maps\116.txt" />
+    <None Include="Assets\Resources\Maps\117.txt" />
+    <None Include="Assets\Resources\Maps\118.txt" />
+    <None Include="Assets\Resources\Maps\119.txt" />
+    <None Include="Assets\Resources\Maps\12.txt" />
+    <None Include="Assets\Resources\Maps\120.txt" />
+    <None Include="Assets\Resources\Maps\121.txt" />
+    <None Include="Assets\Resources\Maps\122.txt" />
+    <None Include="Assets\Resources\Maps\123.txt" />
+    <None Include="Assets\Resources\Maps\124.txt" />
+    <None Include="Assets\Resources\Maps\125.txt" />
+    <None Include="Assets\Resources\Maps\126.txt" />
+    <None Include="Assets\Resources\Maps\127.txt" />
+    <None Include="Assets\Resources\Maps\128.txt" />
+    <None Include="Assets\Resources\Maps\129.txt" />
+    <None Include="Assets\Resources\Maps\13.txt" />
+    <None Include="Assets\Resources\Maps\130.txt" />
+    <None Include="Assets\Resources\Maps\131.txt" />
+    <None Include="Assets\Resources\Maps\132.txt" />
+    <None Include="Assets\Resources\Maps\133.txt" />
+    <None Include="Assets\Resources\Maps\134.txt" />
+    <None Include="Assets\Resources\Maps\135.txt" />
+    <None Include="Assets\Resources\Maps\136.txt" />
+    <None Include="Assets\Resources\Maps\137.txt" />
+    <None Include="Assets\Resources\Maps\138.txt" />
+    <None Include="Assets\Resources\Maps\139.txt" />
+    <None Include="Assets\Resources\Maps\14.txt" />
+    <None Include="Assets\Resources\Maps\140.txt" />
+    <None Include="Assets\Resources\Maps\141.txt" />
+    <None Include="Assets\Resources\Maps\142.txt" />
+    <None Include="Assets\Resources\Maps\143.txt" />
+    <None Include="Assets\Resources\Maps\144.txt" />
+    <None Include="Assets\Resources\Maps\145.txt" />
+    <None Include="Assets\Resources\Maps\146.txt" />
+    <None Include="Assets\Resources\Maps\147.txt" />
+    <None Include="Assets\Resources\Maps\148.txt" />
+    <None Include="Assets\Resources\Maps\149.txt" />
+    <None Include="Assets\Resources\Maps\15.txt" />
+    <None Include="Assets\Resources\Maps\150.txt" />
+    <None Include="Assets\Resources\Maps\151.txt" />
+    <None Include="Assets\Resources\Maps\152.txt" />
+    <None Include="Assets\Resources\Maps\153.txt" />
+    <None Include="Assets\Resources\Maps\154.txt" />
+    <None Include="Assets\Resources\Maps\155.txt" />
+    <None Include="Assets\Resources\Maps\156.txt" />
+    <None Include="Assets\Resources\Maps\157.txt" />
+    <None Include="Assets\Resources\Maps\158.txt" />
+    <None Include="Assets\Resources\Maps\159.txt" />
+    <None Include="Assets\Resources\Maps\16.txt" />
+    <None Include="Assets\Resources\Maps\160.txt" />
+    <None Include="Assets\Resources\Maps\161.txt" />
+    <None Include="Assets\Resources\Maps\162.txt" />
+    <None Include="Assets\Resources\Maps\163.txt" />
+    <None Include="Assets\Resources\Maps\164.txt" />
+    <None Include="Assets\Resources\Maps\165.txt" />
+    <None Include="Assets\Resources\Maps\166.txt" />
+    <None Include="Assets\Resources\Maps\167.txt" />
+    <None Include="Assets\Resources\Maps\168.txt" />
+    <None Include="Assets\Resources\Maps\169.txt" />
+    <None Include="Assets\Resources\Maps\17.txt" />
+    <None Include="Assets\Resources\Maps\170.txt" />
+    <None Include="Assets\Resources\Maps\171.txt" />
+    <None Include="Assets\Resources\Maps\172.txt" />
+    <None Include="Assets\Resources\Maps\173.txt" />
+    <None Include="Assets\Resources\Maps\174.txt" />
+    <None Include="Assets\Resources\Maps\175.txt" />
+    <None Include="Assets\Resources\Maps\176.txt" />
+    <None Include="Assets\Resources\Maps\177.txt" />
+    <None Include="Assets\Resources\Maps\178.txt" />
+    <None Include="Assets\Resources\Maps\179.txt" />
+    <None Include="Assets\Resources\Maps\18.txt" />
+    <None Include="Assets\Resources\Maps\180.txt" />
+    <None Include="Assets\Resources\Maps\181.txt" />
+    <None Include="Assets\Resources\Maps\182.txt" />
+    <None Include="Assets\Resources\Maps\183.txt" />
+    <None Include="Assets\Resources\Maps\184.txt" />
+    <None Include="Assets\Resources\Maps\185.txt" />
+    <None Include="Assets\Resources\Maps\186.txt" />
+    <None Include="Assets\Resources\Maps\187.txt" />
+    <None Include="Assets\Resources\Maps\188.txt" />
+    <None Include="Assets\Resources\Maps\189.txt" />
+    <None Include="Assets\Resources\Maps\19.txt" />
+    <None Include="Assets\Resources\Maps\190.txt" />
+    <None Include="Assets\Resources\Maps\191.txt" />
+    <None Include="Assets\Resources\Maps\192.txt" />
+    <None Include="Assets\Resources\Maps\193.txt" />
+    <None Include="Assets\Resources\Maps\194.txt" />
+    <None Include="Assets\Resources\Maps\195.txt" />
+    <None Include="Assets\Resources\Maps\196.txt" />
+    <None Include="Assets\Resources\Maps\197.txt" />
+    <None Include="Assets\Resources\Maps\198.txt" />
+    <None Include="Assets\Resources\Maps\199.txt" />
+    <None Include="Assets\Resources\Maps\2.txt" />
+    <None Include="Assets\Resources\Maps\20.txt" />
+    <None Include="Assets\Resources\Maps\200.txt" />
+    <None Include="Assets\Resources\Maps\201.txt" />
+    <None Include="Assets\Resources\Maps\202.txt" />
+    <None Include="Assets\Resources\Maps\203.txt" />
+    <None Include="Assets\Resources\Maps\204.txt" />
+    <None Include="Assets\Resources\Maps\205.txt" />
+    <None Include="Assets\Resources\Maps\206.txt" />
+    <None Include="Assets\Resources\Maps\207.txt" />
+    <None Include="Assets\Resources\Maps\208.txt" />
+    <None Include="Assets\Resources\Maps\209.txt" />
+    <None Include="Assets\Resources\Maps\21.txt" />
+    <None Include="Assets\Resources\Maps\210.txt" />
+    <None Include="Assets\Resources\Maps\211.txt" />
+    <None Include="Assets\Resources\Maps\212.txt" />
+    <None Include="Assets\Resources\Maps\213.txt" />
+    <None Include="Assets\Resources\Maps\214.txt" />
+    <None Include="Assets\Resources\Maps\215.txt" />
+    <None Include="Assets\Resources\Maps\216.txt" />
+    <None Include="Assets\Resources\Maps\217.txt" />
+    <None Include="Assets\Resources\Maps\218.txt" />
+    <None Include="Assets\Resources\Maps\219.txt" />
+    <None Include="Assets\Resources\Maps\22.txt" />
+    <None Include="Assets\Resources\Maps\220.txt" />
+    <None Include="Assets\Resources\Maps\221.txt" />
+    <None Include="Assets\Resources\Maps\222.txt" />
+    <None Include="Assets\Resources\Maps\223.txt" />
+    <None Include="Assets\Resources\Maps\224.txt" />
+    <None Include="Assets\Resources\Maps\225.txt" />
+    <None Include="Assets\Resources\Maps\226.txt" />
+    <None Include="Assets\Resources\Maps\227.txt" />
+    <None Include="Assets\Resources\Maps\228.txt" />
+    <None Include="Assets\Resources\Maps\229.txt" />
+    <None Include="Assets\Resources\Maps\23.txt" />
+    <None Include="Assets\Resources\Maps\230.txt" />
+    <None Include="Assets\Resources\Maps\231.txt" />
+    <None Include="Assets\Resources\Maps\232.txt" />
+    <None Include="Assets\Resources\Maps\233.txt" />
+    <None Include="Assets\Resources\Maps\234.txt" />
+    <None Include="Assets\Resources\Maps\235.txt" />
+    <None Include="Assets\Resources\Maps\236.txt" />
+    <None Include="Assets\Resources\Maps\237.txt" />
+    <None Include="Assets\Resources\Maps\238.txt" />
+    <None Include="Assets\Resources\Maps\239.txt" />
+    <None Include="Assets\Resources\Maps\24.txt" />
+    <None Include="Assets\Resources\Maps\240.txt" />
+    <None Include="Assets\Resources\Maps\241.txt" />
+    <None Include="Assets\Resources\Maps\242.txt" />
+    <None Include="Assets\Resources\Maps\243.txt" />
+    <None Include="Assets\Resources\Maps\244.txt" />
+    <None Include="Assets\Resources\Maps\245.txt" />
+    <None Include="Assets\Resources\Maps\246.txt" />
+    <None Include="Assets\Resources\Maps\247.txt" />
+    <None Include="Assets\Resources\Maps\248.txt" />
+    <None Include="Assets\Resources\Maps\249.txt" />
+    <None Include="Assets\Resources\Maps\25.txt" />
+    <None Include="Assets\Resources\Maps\250.txt" />
+    <None Include="Assets\Resources\Maps\251.txt" />
+    <None Include="Assets\Resources\Maps\252.txt" />
+    <None Include="Assets\Resources\Maps\253.txt" />
+    <None Include="Assets\Resources\Maps\254.txt" />
+    <None Include="Assets\Resources\Maps\255.txt" />
+    <None Include="Assets\Resources\Maps\256.txt" />
+    <None Include="Assets\Resources\Maps\257.txt" />
+    <None Include="Assets\Resources\Maps\258.txt" />
+    <None Include="Assets\Resources\Maps\259.txt" />
+    <None Include="Assets\Resources\Maps\26.txt" />
+    <None Include="Assets\Resources\Maps\260.txt" />
+    <None Include="Assets\Resources\Maps\261.txt" />
+    <None Include="Assets\Resources\Maps\262.txt" />
+    <None Include="Assets\Resources\Maps\263.txt" />
+    <None Include="Assets\Resources\Maps\264.txt" />
+    <None Include="Assets\Resources\Maps\265.txt" />
+    <None Include="Assets\Resources\Maps\266.txt" />
+    <None Include="Assets\Resources\Maps\267.txt" />
+    <None Include="Assets\Resources\Maps\268.txt" />
+    <None Include="Assets\Resources\Maps\269.txt" />
+    <None Include="Assets\Resources\Maps\27.txt" />
+    <None Include="Assets\Resources\Maps\270.txt" />
+    <None Include="Assets\Resources\Maps\271.txt" />
+    <None Include="Assets\Resources\Maps\272.txt" />
+    <None Include="Assets\Resources\Maps\273.txt" />
+    <None Include="Assets\Resources\Maps\274.txt" />
+    <None Include="Assets\Resources\Maps\275.txt" />
+    <None Include="Assets\Resources\Maps\276.txt" />
+    <None Include="Assets\Resources\Maps\277.txt" />
+    <None Include="Assets\Resources\Maps\278.txt" />
+    <None Include="Assets\Resources\Maps\279.txt" />
+    <None Include="Assets\Resources\Maps\28.txt" />
+    <None Include="Assets\Resources\Maps\280.txt" />
+    <None Include="Assets\Resources\Maps\281.txt" />
+    <None Include="Assets\Resources\Maps\282.txt" />
+    <None Include="Assets\Resources\Maps\283.txt" />
+    <None Include="Assets\Resources\Maps\284.txt" />
+    <None Include="Assets\Resources\Maps\285.txt" />
+    <None Include="Assets\Resources\Maps\286.txt" />
+    <None Include="Assets\Resources\Maps\287.txt" />
+    <None Include="Assets\Resources\Maps\288.txt" />
+    <None Include="Assets\Resources\Maps\289.txt" />
+    <None Include="Assets\Resources\Maps\29.txt" />
+    <None Include="Assets\Resources\Maps\290.txt" />
+    <None Include="Assets\Resources\Maps\291.txt" />
+    <None Include="Assets\Resources\Maps\292.txt" />
+    <None Include="Assets\Resources\Maps\293.txt" />
+    <None Include="Assets\Resources\Maps\294.txt" />
+    <None Include="Assets\Resources\Maps\295.txt" />
+    <None Include="Assets\Resources\Maps\296.txt" />
+    <None Include="Assets\Resources\Maps\297.txt" />
+    <None Include="Assets\Resources\Maps\3.txt" />
+    <None Include="Assets\Resources\Maps\30.txt" />
+    <None Include="Assets\Resources\Maps\31.txt" />
+    <None Include="Assets\Resources\Maps\32.txt" />
+    <None Include="Assets\Resources\Maps\33.txt" />
+    <None Include="Assets\Resources\Maps\34.txt" />
+    <None Include="Assets\Resources\Maps\35.txt" />
+    <None Include="Assets\Resources\Maps\36.txt" />
+    <None Include="Assets\Resources\Maps\37.txt" />
+    <None Include="Assets\Resources\Maps\38.txt" />
+    <None Include="Assets\Resources\Maps\39.txt" />
+    <None Include="Assets\Resources\Maps\4.txt" />
+    <None Include="Assets\Resources\Maps\40.txt" />
+    <None Include="Assets\Resources\Maps\41.txt" />
+    <None Include="Assets\Resources\Maps\42.txt" />
+    <None Include="Assets\Resources\Maps\43.txt" />
+    <None Include="Assets\Resources\Maps\44.txt" />
+    <None Include="Assets\Resources\Maps\45.txt" />
+    <None Include="Assets\Resources\Maps\46.txt" />
+    <None Include="Assets\Resources\Maps\47.txt" />
+    <None Include="Assets\Resources\Maps\48.txt" />
+    <None Include="Assets\Resources\Maps\49.txt" />
+    <None Include="Assets\Resources\Maps\5.txt" />
+    <None Include="Assets\Resources\Maps\50.txt" />
+    <None Include="Assets\Resources\Maps\51.txt" />
+    <None Include="Assets\Resources\Maps\52.txt" />
+    <None Include="Assets\Resources\Maps\53.txt" />
+    <None Include="Assets\Resources\Maps\54.txt" />
+    <None Include="Assets\Resources\Maps\55.txt" />
+    <None Include="Assets\Resources\Maps\56.txt" />
+    <None Include="Assets\Resources\Maps\57.txt" />
+    <None Include="Assets\Resources\Maps\58.txt" />
+    <None Include="Assets\Resources\Maps\59.txt" />
+    <None Include="Assets\Resources\Maps\6.txt" />
+    <None Include="Assets\Resources\Maps\60.txt" />
+    <None Include="Assets\Resources\Maps\61.txt" />
+    <None Include="Assets\Resources\Maps\62.txt" />
+    <None Include="Assets\Resources\Maps\63.txt" />
+    <None Include="Assets\Resources\Maps\64.txt" />
+    <None Include="Assets\Resources\Maps\65.txt" />
+    <None Include="Assets\Resources\Maps\66.txt" />
+    <None Include="Assets\Resources\Maps\67.txt" />
+    <None Include="Assets\Resources\Maps\68.txt" />
+    <None Include="Assets\Resources\Maps\69.txt" />
+    <None Include="Assets\Resources\Maps\7.txt" />
+    <None Include="Assets\Resources\Maps\70.txt" />
+    <None Include="Assets\Resources\Maps\71.txt" />
+    <None Include="Assets\Resources\Maps\72.txt" />
+    <None Include="Assets\Resources\Maps\73.txt" />
+    <None Include="Assets\Resources\Maps\74.txt" />
+    <None Include="Assets\Resources\Maps\75.txt" />
+    <None Include="Assets\Resources\Maps\76.txt" />
+    <None Include="Assets\Resources\Maps\77.txt" />
+    <None Include="Assets\Resources\Maps\78.txt" />
+    <None Include="Assets\Resources\Maps\79.txt" />
+    <None Include="Assets\Resources\Maps\8.txt" />
+    <None Include="Assets\Resources\Maps\80.txt" />
+    <None Include="Assets\Resources\Maps\81.txt" />
+    <None Include="Assets\Resources\Maps\82.txt" />
+    <None Include="Assets\Resources\Maps\83.txt" />
+    <None Include="Assets\Resources\Maps\84.txt" />
+    <None Include="Assets\Resources\Maps\85.txt" />
+    <None Include="Assets\Resources\Maps\86.txt" />
+    <None Include="Assets\Resources\Maps\87.txt" />
+    <None Include="Assets\Resources\Maps\88.txt" />
+    <None Include="Assets\Resources\Maps\89.txt" />
+    <None Include="Assets\Resources\Maps\9.txt" />
+    <None Include="Assets\Resources\Maps\90.txt" />
+    <None Include="Assets\Resources\Maps\91.txt" />
+    <None Include="Assets\Resources\Maps\92.txt" />
+    <None Include="Assets\Resources\Maps\93.txt" />
+    <None Include="Assets\Resources\Maps\94.txt" />
+    <None Include="Assets\Resources\Maps\95.txt" />
+    <None Include="Assets\Resources\Maps\96.txt" />
+    <None Include="Assets\Resources\Maps\97.txt" />
+    <None Include="Assets\Resources\Maps\98.txt" />
+    <None Include="Assets\Resources\Maps\99.txt" />
+    <None Include="Assets\Resources\Maps\classic.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+</Project>
