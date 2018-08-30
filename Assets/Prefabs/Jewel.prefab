@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 224851458479979400}
   - component: {fileID: 222453790705122508}
   - component: {fileID: 114883655107120150}
+  - component: {fileID: 114709765096663290}
+  - component: {fileID: 95830592974608152}
   m_Layer: 8
   m_Name: JewelPicture
   m_TagString: Untagged
@@ -89,7 +91,6 @@ GameObject:
   - component: {fileID: 224578684526649612}
   - component: {fileID: 222643043940323840}
   - component: {fileID: 114382260222320890}
-  - component: {fileID: 95511633004860682}
   m_Layer: 8
   m_Name: Jewel
   m_TagString: Untagged
@@ -131,13 +132,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &95511633004860682
+--- !u!95 &95830592974608152
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1622031085444404}
+  m_GameObject: {fileID: 1225498633677014}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f8830f9aeb4b1374fb3f610cabb29596, type: 2}
@@ -214,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationJewel: {x: 0, y: 0, z: 0}
+  identityCode: 0
   isSelected: 0
 --- !u!114 &114604124470160608
 MonoBehaviour:
@@ -242,6 +244,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114709765096663290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1225498633677014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0dcbc49172971849809c2be01a0e7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identityCode: 0
 --- !u!114 &114769915012163724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,7 +329,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 84692b7a26936f9438365cfa083c84c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0200626cc7284ff47b4bc30bba1f0a63, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

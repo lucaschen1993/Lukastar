@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour {
     #endregion
 
     public bool isMatch;
+    public bool isExchangeDone;
 
     // Use this for initialization
     void Start() {
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour {
         colSize = 6;
         isMatch = false;
         canSelect = true;
+        isExchangeDone = false;
         needRemoveJewels = new List<GameObject>();
         jewelObjects = new GameObject[rowSize, colSize];
         jewelSprites = Resources.LoadAll<Sprite>("Graphics/Jewels");
@@ -49,10 +51,56 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
- 
+        if(isExchangeDone == true)
+        {
+            isExchangeDone = false;
+            MatchRule();
+        }
+        if(isMatch)
+        {
+            isMatch = false;
+            JewelsManager.Instance.ResetAllJewelSelected();
+            RemoveJewel(needRemoveJewels);
+        }
+    }
+
+    private void MatchRule()
+    {
+        GameObject lastSelected = JewelsManager.Instance.lastSelected;
+        GameObject currentSeleted = JewelsManager.Instance.currentSeleted;
+        Vector3 lastPosition = GetJewelPosition(lastSelected);
+        Vector3 currentPosition = GetJewelPosition(currentSeleted);
+
+        // 判断宝石的移动是否符合游戏的规则
+        Jewel.MoveDirection moveDirection = Jewel.MoveDirection.noMove;
+        #region 移动规则
+        //符合下移规则
+        if (lastPosition.x + 1 == currentPosition.x && lastPosition.y == currentPosition.y)
+        {
+            moveDirection = Jewel.MoveDirection.moveDown;
+        }
+        //符合上移规则
+        else if (lastPosition.x - 1 == currentPosition.x && lastPosition.y == currentPosition.y)
+        {
+            moveDirection = Jewel.MoveDirection.moveUp;
+        }
+        //符合右移规则
+        else if (lastPosition.y + 1 == currentPosition.y && lastPosition.x == currentPosition.x)
+        {
+            moveDirection = Jewel.MoveDirection.moveRight;
+        }
+        //符合左移规则
+        else if (lastPosition.y - 1 == currentPosition.y && lastPosition.x == currentPosition.x)
+        {
+            moveDirection = Jewel.MoveDirection.moveLeft;
+        }
+        //判断是否匹配
+        StartCoroutine(MatchJewel(currentSeleted, lastSelected, moveDirection));
+        #endregion
     }
 
     void InitializedGame() {
+        int id = 0;
         for (int i = 0; i < rowSize; i++)
         {
             for (int j = 0; j < colSize; j++)
@@ -96,7 +144,9 @@ public class GameManager : MonoBehaviour {
                 GameObject itemObject = GameObject.Instantiate<GameObject>(jewelPrefab, gamePlayPanel.transform, false);
                 itemObject.GetComponent<RectTransform>().localPosition = new Vector2(-250f + j * xOffset, 250f + i * yOffset);
                 //Debug.Log(i + " " + j);
+                itemObject.transform.Find("JewelPicture").GetComponent<JewelPicture>().identityCode = id;
                 jewelObjects[i, j] = itemObject;
+                id++;
             }
         }
     }
@@ -331,9 +381,10 @@ public class GameManager : MonoBehaviour {
         }
     }
     //匹配宝石
-    internal bool MatchJewel(GameObject current, GameObject last, Jewel.MoveDirection moveDirection)
+    IEnumerator MatchJewel(GameObject current, GameObject last, Jewel.MoveDirection moveDirection)
     {
         isMatch = false;
+        yield return new WaitForEndOfFrame();
         #region MatchJewel的参数
         //添加找到current需要的对象
         int rowCurrentCount = 1;
@@ -676,90 +727,85 @@ public class GameManager : MonoBehaviour {
             //T型或者L型
             if (colCurrentCount >= 3 && rowCurrentCount >= 3)
             {
-                needRemoveJewels.Add(currentObj);
+                needRemoveJewels.Add(currentObj.transform.Find("JewelPicture").gameObject);
                 for (int i = 0; i < rowCurrentCountObjs.Count; i++)
                 {
-                    needRemoveJewels.Add(rowCurrentCountObjs[i]);
+                    needRemoveJewels.Add(rowCurrentCountObjs[i].transform.Find("JewelPicture").gameObject);
                 }
                 for (int i = 0; i < colCurrentCountObjs.Count; i++)
                 {
-                    needRemoveJewels.Add(colCurrentCountObjs[i]);
+                    needRemoveJewels.Add(colCurrentCountObjs[i].transform.Find("JewelPicture").gameObject);
                 }
             }
             else if (colCurrentCount >= 3)
             {
-                needRemoveJewels.Add(currentObj);
+                needRemoveJewels.Add(currentObj.transform.Find("JewelPicture").gameObject);
                 for (int i = 0; i < colCurrentCountObjs.Count; i++)
                 {
-                    needRemoveJewels.Add(colCurrentCountObjs[i]);
+                    needRemoveJewels.Add(colCurrentCountObjs[i].transform.Find("JewelPicture").gameObject);
                 }
             }
             else if (rowCurrentCount >= 3)
             {
-                needRemoveJewels.Add(currentObj);
+                needRemoveJewels.Add(currentObj.transform.Find("JewelPicture").gameObject);
                 for (int i = 0; i < rowCurrentCountObjs.Count; i++)
                 {
-                    needRemoveJewels.Add(rowCurrentCountObjs[i]);
+                    needRemoveJewels.Add(rowCurrentCountObjs[i].transform.Find("JewelPicture").gameObject);
                 }
             }
             // lastObj Match判断
             if (colLastCount >= 3 && rowLastCount >= 3)
             {
-                needRemoveJewels.Add(lastObj);
+                needRemoveJewels.Add(lastObj.transform.Find("JewelPicture").gameObject);
                 for (int i = 0; i < rowLastCountObjs.Count; i++)
                 {
-                    needRemoveJewels.Add(rowLastCountObjs[i]);
+                    needRemoveJewels.Add(rowLastCountObjs[i].transform.Find("JewelPicture").gameObject);
                 }
                 for (int i = 0; i < colLastCountObjs.Count; i++)
                 {
-                    needRemoveJewels.Add(colLastCountObjs[i]);
+                    needRemoveJewels.Add(colLastCountObjs[i].transform.Find("JewelPicture").gameObject);
                 }
             }
             else if (colLastCount >= 3)
             {
-                needRemoveJewels.Add(lastObj);
+                needRemoveJewels.Add(lastObj.transform.Find("JewelPicture").gameObject);
                 for (int i = 0; i < colLastCountObjs.Count; i++)
                 {
-                    needRemoveJewels.Add(colLastCountObjs[i]);
+                    needRemoveJewels.Add(colLastCountObjs[i].transform.Find("JewelPicture").gameObject);
                 }
             }
             else if (rowLastCount >= 3)
             {
-                needRemoveJewels.Add(lastObj);
+                needRemoveJewels.Add(lastObj.transform.Find("JewelPicture").gameObject);
                 for (int i = 0; i < rowLastCountObjs.Count; i++)
                 {
-                    needRemoveJewels.Add(rowLastCountObjs[i]);
+                    needRemoveJewels.Add(rowLastCountObjs[i].transform.Find("JewelPicture").gameObject);
                 }
             }
             //播放爆炸的声音
             AudioManager.Instance.PlayAudio("Audio/boom");
-            RemoveJewel(needRemoveJewels);
-            needRemoveJewels.Clear();
             isMatch = true;
-
+            //needRemoveJewels.Clear();
             //宝石下移
-            CallMoveDownJewels();
+            //CallMoveDownJewels();
             //再次生成宝石
-            ReInitializedJewels();
-
-            return true;
+            //ReInitializedJewels();
         }
-        isMatch = false;
-        return false;
+        if(isMatch == false)
+        {
+            JewelsManager.Instance.ResetOriginJewel();
+            JewelsManager.Instance.ResetAllJewelSelected();
+        }
     }
-    
+    //移除宝石
     private void RemoveJewel(List<GameObject> gameObject)
     {
         for (int i = 0; i < gameObject.Count; i++)
         {
-            if (gameObject[i].transform.Find("JewelPicture") != null)
+            if (gameObject[i]!= null)
             {
-                //Debug.Log(GetJewelPosition(jewelObjects[(int)tempVec.x, (int)tempVec.y]));
-                //Debug.Log("tmp : " + GetJewelPosition(gameObject[i]));
-                //Debug.Log(jewelObjects[(int)tempVec.x, (int)tempVec.y].transform.Find("JewelPicture").GetComponent<Image>().sprite.name);            
-                reMatchObjects.Add(gameObject[i]);
-                //Debug.Log("调用前:"+ GetJewelPosition(gameObject[i]) + " " + gameObject[i].transform.Find("JewelPicture").GetComponent<Image>().sprite);
-                AnimationManager.Instance.CallPlayCrashAnim(gameObject[i]);
+                //reMatchObjects.Add(gameObject[i]);
+                gameObject[i].GetComponent<JewelPicture>().Fade();
             }
         }
     }
@@ -784,23 +830,7 @@ public class GameManager : MonoBehaviour {
         //AudioManager.Instance.PlayBGM();
         InitializedGame();
     }
-    //交换宝石
-    public void ExchangeJewel(GameObject obj1,GameObject obj2)
-    {   
-        if (obj1 != obj2)
-        {
-            Vector3 obj1Position, obj2Position;
-            obj1Position = obj1.transform.localPosition;
-            obj1Position.z = 0;
-            obj2Position = obj2.transform.localPosition;
-            obj2Position.z = 0;
-            //DoTween制作宝石交换动画
-            obj1.transform.Find("JewelPicture").SetParent(obj2.transform);
-            obj2.transform.Find("JewelPicture").SetParent(obj1.transform);
-            obj1.transform.Find("JewelPicture").DOLocalMove(Vector3.zero, 0.3f);
-            obj2.transform.Find("JewelPicture").DOLocalMove(Vector3.zero, 0.3f);
-        }
-    }
+
     //得到宝石的位置
     public Vector3 GetJewelPosition(GameObject obj)
     {

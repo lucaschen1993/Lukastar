@@ -3,17 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class Jewel : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler,IPointerClickHandler
 {
     [SerializeField]
     private Vector3 locationJewel;
-
+    public int identityCode; 
+    private Animator anim;
     private Transform jewelChild;
     private Vector3 jewelChildOrigin; //保存当前Jewel的原始位置
     public bool isSelected;
     public enum MoveDirection
     {
+        noMove,
         moveUp,
         moveDown,
         moveLeft,
@@ -24,11 +28,13 @@ public class Jewel : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler,IPo
     {
         jewelChild = transform.Find("JewelPicture");
         jewelChildOrigin = transform.position;
+        anim = jewelChild.GetComponent<Animator>();
         isSelected = false;
+        LocationJewelPosition();
     }
     private void Update()
     {
-        LocationJewelPosition();
+        
     }
 
     private void LocationJewelPosition()
@@ -53,62 +59,37 @@ public class Jewel : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler,IPo
         if(GameManager.Instance.canSelect)
         {
             AudioManager.Instance.PlayAudio("Audio/sfx_click");
+            //该宝石没有被选择，选中宝石
             if (!isSelected)
             {
-                //选中宝石
                 isSelected = true;
                 transform.Find("Select").gameObject.SetActive(true);
-
-                JewelsManager.Instance.currentSeleted = gameObject;
-                JewelsManager.Instance.currentSeletedPosition = JewelsManager.Instance.GetJewelPosition(gameObject);
-                //选中宝石以后的处理
-                if (JewelsManager.Instance.lastSeleted != null)
+                if (!JewelsManager.Instance.lastSelected)
                 {
-                    Vector3 lastPosition = JewelsManager.Instance.lastSeletedPosition;
-                    Vector3 currentPosition = JewelsManager.Instance.currentSeletedPosition;
-                    //Debug.Log("last: "+lastPosition + "    current: " + currentPosition);
-
-                    // 判断宝石的移动是否符合游戏的规则
-                    if (lastPosition.x + 1 == currentPosition.x && lastPosition.y == currentPosition.y)
-                    {
-                        //符合规则
-                        JewelsManager.Instance.ExchangeJewel(MoveDirection.moveDown);
-                    }
-                    else if (lastPosition.x - 1 == currentPosition.x && lastPosition.y == currentPosition.y)
-                    {
-                        //符合规则
-                        JewelsManager.Instance.ExchangeJewel(MoveDirection.moveUp);
-                    }
-                    else if (lastPosition.y + 1 == currentPosition.y && lastPosition.x == currentPosition.x)
-                    {
-                        //符合规则
-                        JewelsManager.Instance.ExchangeJewel(MoveDirection.moveRight);
-                    }
-                    else if (lastPosition.y - 1 == currentPosition.y && lastPosition.x == currentPosition.x)
-                    {
-                        //符合规则
-                        JewelsManager.Instance.ExchangeJewel(MoveDirection.moveLeft);
-                    }
-                    else
-                    {
-                        //不符合规则
-                        JewelsManager.Instance.ResetAllJewelSelected();
-                    }
+                    JewelsManager.Instance.lastSelected = gameObject;
                 }
-                if (JewelsManager.Instance.lastSeleted == null)
+                else if (!JewelsManager.Instance.currentSeleted)
                 {
-                    JewelsManager.Instance.CurrentTolast(gameObject);
-                    JewelsManager.Instance.CurrentToLastPostion(JewelsManager.Instance.currentSeletedPosition);
-                    JewelsManager.Instance.currentSeleted = null;
+                    JewelsManager.Instance.currentSeleted = gameObject;
+                    //调用宝石交换函数
+                    JewelsManager.Instance.CallExchangeJewel();
                 }
             }
             else if (isSelected)
             {
-                transform.Find("Select").gameObject.SetActive(false);
-                JewelsManager.Instance.lastSeleted = gameObject;
                 isSelected = false;
+                transform.Find("Select").gameObject.SetActive(false);
                 JewelsManager.Instance.ResetAllJewelSelected();
             }
-        }        
+        }
     }
+
+    //宝石移动的方法
+    public void Move(GameObject obj)
+    {
+        GameObject childObj = gameObject.transform.Find("JewelPicture").gameObject;
+        childObj.transform.SetParent(obj.transform);
+        childObj.transform.DOLocalMove(Vector3.zero, 0.3f);
+    }
+
 }

@@ -328,47 +328,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &696873109
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 696873111}
-  - component: {fileID: 696873110}
-  m_Layer: 0
-  m_Name: AnimationManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &696873110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 696873109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cad156d95a6c7324683d35e3a2d3da47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clearAnimation: {fileID: 7400000, guid: c15dba7d6efdac548a4d2754e1bb07da, type: 2}
---- !u!4 &696873111
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 696873109}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &764388278
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,9 +781,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6deb55c9d0f3af24893f73b809b41c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastSeleted: {fileID: 0}
+  lastSelected: {fileID: 0}
   currentSeleted: {fileID: 0}
-  lastSeletedPosition: {x: 0, y: 0, z: 0}
+  lastSelectedPosition: {x: 0, y: 0, z: 0}
   currentSeletedPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1492768232
 Transform:
@@ -1242,6 +1201,7 @@ MonoBehaviour:
     type: 2}
   mainMenu: {fileID: 1124128023}
   isMatch: 0
+  isExchangeDone: 0
 --- !u!4 &1919837792
 Transform:
   m_ObjectHideFlags: 0

@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class JewelsManager : MonoBehaviour {
     private static JewelsManager _instance;
-    public GameObject lastSeleted;
+    public GameObject lastSelected;
     public GameObject currentSeleted;
-    public Vector3 lastSeletedPosition;
+    public Vector3 lastSelectedPosition;
     public Vector3 currentSeletedPosition;
 
     public static JewelsManager Instance
@@ -19,49 +19,61 @@ public class JewelsManager : MonoBehaviour {
                     _instance = GameObject.Find("JewelsManager").GetComponent<JewelsManager>();
             return _instance;
         }
-    }    
+    }
+    private bool isReset;
 
-    public void ExchangeJewel(Jewel.MoveDirection moveDirection)
+    private void Start()
+    {
+        isReset = false;
+    }
+    //交换宝石
+    public void CallExchangeJewel()
+    {
+        bool isConnected =  IsConnected(currentSeleted, lastSelected);
+        //相邻才能交换
+        if (isConnected)
+        {
+            StartCoroutine(ExchangeJewel(currentSeleted, lastSelected));
+        }
+    }
+
+    IEnumerator ExchangeJewel(GameObject obj1, GameObject obj2)
     {
         GameManager.Instance.canSelect = false;
-        //交换当前两个宝石
-        GameManager.Instance.ExchangeJewel(currentSeleted,lastSeleted);
-        //Debug.Log("currentSeleted : " + currentSeleted.transform.transform.Find("JewelPicture").GetComponent<Image>().sprite.name + " lastSeleted : " + lastSeleted.transform.transform.Find("JewelPicture").GetComponent<Image>().sprite.name);
-        bool isMatch = GameManager.Instance.MatchJewel(currentSeleted, lastSeleted, moveDirection);
-        if (!isMatch)  
+        if (obj1 != obj2)
         {
-            AudioManager.Instance.PlayAudio("Audio/sfx_lock");
-            //没匹配的情况下，交换回来
-            GameManager.Instance.ExchangeJewel(lastSeleted, currentSeleted);
-            GameManager.Instance.canSelect = true;
+            GameObject tempObj = obj1;
+            //DoTween制作宝石交换动画
+            obj1.GetComponent<Jewel>().Move(obj2);
+            obj2.GetComponent<Jewel>().Move(tempObj);
         }
-        //重置GameManager的isMatch和canSelect    
-        GameManager.Instance.isMatch = false;
+        yield return new WaitForSeconds(0.4f);
         GameManager.Instance.canSelect = true;
+        if(!isReset)
+        {
+            GameManager.Instance.isExchangeDone = true;
+        }
+        isReset = false;
+    }
+
+    public void ResetOriginJewel()
+    {
+        isReset = true;
+        AudioManager.Instance.PlayAudio("Audio/sfx_lock");
+        StartCoroutine(ExchangeJewel(lastSelected, currentSeleted));
         ResetAllJewelSelected();
     }
-
-    public void CurrentTolast(GameObject obj)
-    {
-        if(currentSeleted!=null)
-        lastSeleted = obj;
-    }
-    public Vector3 GetJewelPosition(GameObject obj)
-    {
-        return GameManager.Instance.GetJewelPosition(obj);
-    }
-
-    internal void CurrentToLastPostion(Vector3 objPosition)
-    {
-        if (currentSeletedPosition != null)
-            lastSeletedPosition = objPosition;
-    }
-
+    
     public void ResetAllJewelSelected()
     {
-        lastSeleted = null;
-        currentSeleted = null;
-
+        lastSelected = currentSeleted = null;
         GameManager.Instance.SetAllJewelSelectedIsFalse();
+    }
+
+    public bool IsConnected(GameObject obj1,GameObject obj2)
+    {
+        Vector3 obj1Position = GameManager.Instance.GetJewelPosition(obj1);
+        Vector3 obj2Position = GameManager.Instance.GetJewelPosition(obj2);
+        return ((obj1Position.x == obj2Position.x && Mathf.Abs(obj1Position.y - obj2Position.y) == 1) || (obj1Position.y == obj2Position.y && Mathf.Abs(obj1Position.x - obj2Position.x) == 1)) ? true : false;
     }
 }
