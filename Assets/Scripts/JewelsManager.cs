@@ -35,6 +35,10 @@ public class JewelsManager : MonoBehaviour {
         {
             StartCoroutine(ExchangeJewel(currentSeleted, lastSelected));
         }
+        else
+        {
+            ResetAllJewelSelected();
+        }
     }
 
     IEnumerator ExchangeJewel(GameObject obj1, GameObject obj2)
@@ -49,11 +53,16 @@ public class JewelsManager : MonoBehaviour {
         }
         yield return new WaitForSeconds(0.4f);
         GameManager.Instance.canSelect = true;
-        if(!isReset)
+        //非重置情况调用MatchRule
+        if(isReset==false)
         {
-            GameManager.Instance.isExchangeDone = true;
+            GameManager.Instance.MatchRule();
         }
-        isReset = false;
+        //如果是重置的情况，把重置状态设置为false
+        else if(isReset == true)
+        {
+            isReset = false;
+        }
     }
 
     public void ResetOriginJewel()
@@ -62,6 +71,7 @@ public class JewelsManager : MonoBehaviour {
         AudioManager.Instance.PlayAudio("Audio/sfx_lock");
         StartCoroutine(ExchangeJewel(lastSelected, currentSeleted));
         ResetAllJewelSelected();
+        GameManager.Instance.canSelect = true;
     }
     
     public void ResetAllJewelSelected()

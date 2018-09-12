@@ -15,14 +15,7 @@ public class Jewel : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler,IPo
     private Transform jewelChild;
     private Vector3 jewelChildOrigin; //保存当前Jewel的原始位置
     public bool isSelected;
-    public enum MoveDirection
-    {
-        noMove,
-        moveUp,
-        moveDown,
-        moveLeft,
-        moveRight,
-    }
+    private IEnumerator moveCoroutine;
 
     private void Start()
     {
@@ -87,9 +80,19 @@ public class Jewel : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler,IPo
     //宝石移动的方法
     public void Move(GameObject obj)
     {
-        GameObject childObj = gameObject.transform.Find("JewelPicture").gameObject;
-        childObj.transform.SetParent(obj.transform);
-        childObj.transform.DOLocalMove(Vector3.zero, 0.3f);
+        if(moveCoroutine!=null)
+        {
+            StopCoroutine(moveCoroutine);
+        }
+        moveCoroutine = MoveCoroutine(obj);
+        StartCoroutine(moveCoroutine);
     }
 
+    private IEnumerator MoveCoroutine(GameObject obj)
+    {
+        GameObject childObj = gameObject.transform.Find("JewelPicture").gameObject;
+        childObj.transform.SetParent(obj.transform);
+        childObj.transform.DOLocalMove(Vector3.zero, GameManager.Instance.moveDownTime);
+        yield return new WaitForSeconds(GameManager.Instance.moveDownTime);
+    }
 }

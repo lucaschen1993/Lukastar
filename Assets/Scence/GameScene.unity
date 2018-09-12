@@ -1199,6 +1199,7 @@ MonoBehaviour:
   canSelect: 0
   jewelPrefab: {fileID: 1622031085444404, guid: 4c1b2d3ed231c7640b7f7bf7d978a294,
     type: 2}
+  moveDownTime: 0
   mainMenu: {fileID: 1124128023}
   isMatch: 0
   isExchangeDone: 0
