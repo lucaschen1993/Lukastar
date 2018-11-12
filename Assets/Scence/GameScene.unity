@@ -689,6 +689,12 @@ AudioSource:
   m_PrefabParentObject: {fileID: 82279166290478936, guid: 9474f3425d1e4d6499c0b3714726e869,
     type: 2}
   m_PrefabInternal: {fileID: 1855893196}
+--- !u!114 &1333632939 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114027471780278788, guid: 9474f3425d1e4d6499c0b3714726e869,
+    type: 2}
+  m_PrefabInternal: {fileID: 1855893196}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1484919417
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,6 +846,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AudioMgr: {fileID: 1855893197}
   m_BackGoundMusicMgr: {fileID: 1146451511}
+--- !u!114 &1667785463 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114243666286106134, guid: 9474f3425d1e4d6499c0b3714726e869,
+    type: 2}
+  m_PrefabInternal: {fileID: 1855893196}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1695393887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,40 +1139,21 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114431612829179112, guid: 9474f3425d1e4d6499c0b3714726e869,
+    - target: {fileID: 224123156941593042, guid: 9474f3425d1e4d6499c0b3714726e869,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1919837791}
+      propertyPath: m_LocalPosition.x
+      value: 401
+      objectReference: {fileID: 0}
     - target: {fileID: 224312017832321642, guid: 9474f3425d1e4d6499c0b3714726e869,
         type: 2}
       propertyPath: m_LocalPosition.y
       value: -7.3500977
       objectReference: {fileID: 0}
-    - target: {fileID: 224228498388167338, guid: 9474f3425d1e4d6499c0b3714726e869,
+    - target: {fileID: 114431612829179112, guid: 9474f3425d1e4d6499c0b3714726e869,
         type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114324690136296514, guid: 9474f3425d1e4d6499c0b3714726e869,
-        type: 2}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114732328235617662, guid: 9474f3425d1e4d6499c0b3714726e869,
-        type: 2}
-      propertyPath: m_Color.a
-      value: 0.316
-      objectReference: {fileID: 0}
-    - target: {fileID: 114732328235617662, guid: 9474f3425d1e4d6499c0b3714726e869,
-        type: 2}
-      propertyPath: m_Sprite
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413021149972700, guid: 9474f3425d1e4d6499c0b3714726e869, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1919837791}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9474f3425d1e4d6499c0b3714726e869, type: 2}
   m_IsPrefabParent: 0
@@ -1201,7 +1194,10 @@ MonoBehaviour:
     type: 2}
   moveDownTime: 0
   mainMenu: {fileID: 1124128023}
-  isMatch: 0
+  ScoreText: {fileID: 1667785463}
+  StepsText: {fileID: 1333632939}
+  StepsCount: 0
+  jewelSprites: []
   isExchangeDone: 0
 --- !u!4 &1919837792
 Transform:

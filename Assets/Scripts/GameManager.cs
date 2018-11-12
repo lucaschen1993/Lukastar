@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using DG.Tweening;
 using System;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour {
 
@@ -24,6 +25,11 @@ public class GameManager : MonoBehaviour {
     private bool isMoveDown;
     private bool moveDownSuccess; 
     List<GameObject> needRemoveJewels;
+
+    public Text ScoreText;
+    public Text StepsText;
+    private int _scoreCount;
+    public int StepsCount;
 
     [SerializeField]
     private Sprite[] jewelSprites;
@@ -59,6 +65,11 @@ public class GameManager : MonoBehaviour {
         jewelObjects = new GameObject[rowSize, colSize];
         jewelSprites = Resources.LoadAll<Sprite>("Graphics/Jewels");
         gamePlayPanel = GameObject.Find("/UICanvas/GamePlay/GamePlayPanel");
+
+        ScoreText.text = "0";
+        StepsText.text = "20";
+        _scoreCount = 0;
+        StepsCount = 20;
     }
 
     // Update is called once per frame
@@ -282,31 +293,54 @@ public class GameManager : MonoBehaviour {
         //1.横向连消
         if (matchColList.Count >= 3 && matchRowList.Count < 3)
         {
+            if (matchColList.Count == 3)
+            {
+                StepAndScore(1);
+            }
+            else if (matchColList.Count == 4)
+            {
+                StepAndScore(2);
+            }
+            else if (matchColList.Count == 5)
+            {
+                StepAndScore(3);
+            }
             for (int i = 0; i < matchColList.Count; i++)
             {
                 needRemoveJewels.Add(matchColList[i]);
             }
             //播放爆炸的声音
             AudioManager.Instance.PlayAudio("Audio/boom");
-            //state = GameState.Match;
             return true;
         }
         //2.纵向连消
         else if (matchRowList.Count >= 3 && matchColList.Count < 3)
         {
+            if (matchRowList.Count == 3)
+            {
+                StepAndScore(1);
+            }
+            else if (matchRowList.Count == 4)
+            {
+                StepAndScore(2);
+            }
+            else if (matchRowList.Count == 5)
+            {
+                StepAndScore(3);
+            }
             for (int i = 0; i < matchRowList.Count; i++)
             {
                 needRemoveJewels.Add(matchRowList[i]);
             }
             //播放爆炸的声音
             AudioManager.Instance.PlayAudio("Audio/boom");
-            //state = GameState.Match;
             return true;
         }
         //3.特殊情况
         else if (matchColList.Count >= 3 && matchRowList.Count >= 3)
         {
             matchRowList.RemoveAt(0);
+            StepAndScore(2);
             for (int i = 0; i < matchRowList.Count; i++)
             {
                 needRemoveJewels.Add(matchRowList[i]);
@@ -317,7 +351,6 @@ public class GameManager : MonoBehaviour {
             }
             //播放爆炸的声音
             AudioManager.Instance.PlayAudio("Audio/boom");
-            //state = GameState.Match;
             return true;
         }
         //state = GameState.Normal;
@@ -397,4 +430,13 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
+
+    private void StepAndScore(int param)
+    {
+        _scoreCount += param;
+        ScoreText.text = _scoreCount.ToString();
+        StepsCount--;
+        StepsText.text = StepsCount.ToString();
+    }
 }
+

@@ -21,7 +21,6 @@ public class JewelPicture : MonoBehaviour {
 	}
     public void Fade()
     {
-        //Debug.Log(GameManager.Instance.GetJewelPosition(gameObject) + " " + transform.Find("JewelPicture").GetComponent<Image>().sprite.name + " " + transform.Find("JewelPicture").GetComponent<JewelPicture>().identityCode);
         anim.SetTrigger("JewelCrash");
         StartCoroutine(FadeJewel());
     }
