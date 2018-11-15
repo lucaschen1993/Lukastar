@@ -5,6 +5,7 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 using UnityEngine.Rendering;
+using LuaInterface;
 
 public class GameManager : MonoBehaviour {
 
@@ -18,7 +19,6 @@ public class GameManager : MonoBehaviour {
     private GameObject[,] jewelObjects;
     private int rowSize, colSize;
     public float moveDownTime;
-    public GameObject mainMenu;
     private bool gameStart;
     private bool isMatch;
     private bool isRemove;
@@ -26,7 +26,9 @@ public class GameManager : MonoBehaviour {
     private bool moveDownSuccess; 
     List<GameObject> needRemoveJewels;
 
+
     public Text ScoreText;
+
     public Text StepsText;
     private int _scoreCount;
     public int StepsCount;
@@ -48,8 +50,13 @@ public class GameManager : MonoBehaviour {
 
     public bool isExchangeDone;
 
+    void Awake()
+    {
+        
+    }
+
     // Use this for initialization
-    void Start() {
+        void Start() {
         rowSize = 6;
         colSize = 6;
         moveDownTime = 0.2f;
@@ -65,11 +72,12 @@ public class GameManager : MonoBehaviour {
         jewelObjects = new GameObject[rowSize, colSize];
         jewelSprites = Resources.LoadAll<Sprite>("Graphics/Jewels");
         gamePlayPanel = GameObject.Find("/UICanvas/GamePlay/GamePlayPanel");
-
         ScoreText.text = "0";
         StepsText.text = "20";
         _scoreCount = 0;
         StepsCount = 20;
+
+        GameStart();
     }
 
     // Update is called once per frame
@@ -389,9 +397,7 @@ public class GameManager : MonoBehaviour {
     //开始游戏
     public void GameStart()
     {
-        //隐藏主界面
         gameStart = true;
-        mainMenu.SetActive(false);
         AudioManager.Instance.PlayBGM();
         InitializedGame();
     }
@@ -438,5 +444,6 @@ public class GameManager : MonoBehaviour {
         StepsCount--;
         StepsText.text = StepsCount.ToString();
     }
+    
 }
 
