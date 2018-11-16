@@ -276,10 +276,45 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1009751719}
-    - target: {fileID: 114539519391938582, guid: c654ecb4aa784704d88f77cf915f8dbc,
+    - target: {fileID: 224418327292376316, guid: c654ecb4aa784704d88f77cf915f8dbc,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToLoadingScene
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224418327292376316, guid: c654ecb4aa784704d88f77cf915f8dbc,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224418327292376316, guid: c654ecb4aa784704d88f77cf915f8dbc,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224418327292376316, guid: c654ecb4aa784704d88f77cf915f8dbc,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224418327292376316, guid: c654ecb4aa784704d88f77cf915f8dbc,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224418327292376316, guid: c654ecb4aa784704d88f77cf915f8dbc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224418327292376316, guid: c654ecb4aa784704d88f77cf915f8dbc,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224418327292376316, guid: c654ecb4aa784704d88f77cf915f8dbc,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c654ecb4aa784704d88f77cf915f8dbc, type: 2}
@@ -371,7 +406,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 941048097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 512, y: 384, z: 0}
+  m_LocalPosition: {x: 611.5, y: 454.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 509519759}
@@ -420,7 +455,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1009751717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0b1e51dacfe0a44493ca4672b77f534, type: 3}
+  m_Script: {fileID: 11500000, guid: 79684903a6630bf4b973a7ed48b90aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1865086787

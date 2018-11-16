@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using DG.Tweening;
-using System;
-using UnityEngine.Rendering;
-using LuaInterface;
+
 
 public class GameManager : MonoBehaviour {
 
@@ -57,8 +55,8 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
         void Start() {
-        rowSize = 6;
-        colSize = 6;
+        rowSize = 8;
+        colSize = 8;
         moveDownTime = 0.2f;
         animationPlayTime = 0.71f;
         canSelect = true;
@@ -73,7 +71,7 @@ public class GameManager : MonoBehaviour {
         jewelSprites = Resources.LoadAll<Sprite>("Graphics/Jewels");
         gamePlayPanel = GameObject.Find("/UICanvas/GamePlay/GamePlayPanel");
         ScoreText.text = "0";
-        StepsText.text = "20";
+        StepsText.text = "20/20";
         _scoreCount = 0;
         StepsCount = 20;
 
@@ -97,6 +95,7 @@ public class GameManager : MonoBehaviour {
             JewelsManager.Instance.ResetOriginJewel();
         }else if( lastMatch || currentMatch)
         {
+            CountingSteps();
             RemoveJewel();
             StartCoroutine(FillJewels());
         }
@@ -144,8 +143,8 @@ public class GameManager : MonoBehaviour {
                 }
                 jewelPrefab.transform.Find("JewelPicture").GetComponent<Image>().sprite = jewelSprites[remainIndex[UnityEngine.Random.Range(0, remainIndex.Count)] - 1];
                 GameObject itemObject = Instantiate<GameObject>(jewelPrefab, gamePlayPanel.transform, false);
-                itemObject.GetComponent<RectTransform>().localPosition = new Vector2(-250f + j * xOffset, 250f + (i-6) * yOffset);
-                itemObject.GetComponent<RectTransform>().DOLocalMove(new Vector2(-250f + j * xOffset, 250f + i * yOffset),1.0f);
+                itemObject.GetComponent<RectTransform>().localPosition = new Vector2(-350f + j * xOffset, 350f + (i-8) * yOffset);
+                itemObject.GetComponent<RectTransform>().DOLocalMove(new Vector2(-350f + j * xOffset, 350f + i * yOffset),1.0f);
                 jewelObjects[i, j] = itemObject;
             }
         }
@@ -234,7 +233,7 @@ public class GameManager : MonoBehaviour {
                     initializedChild.name = "JewelPicture";
                     initializedChild.GetComponent<Image>().sprite = jewelSprites[UnityEngine.Random.Range(1, 8)];
                     //生成的宝石的坐标类似于一列
-                    initializedChild.localPosition = new Vector3(-250f + i * xOffset, 250f - (indexOffset - j) * yOffset, 0);
+                    initializedChild.localPosition = new Vector3(-350f + i * xOffset, 350f - (indexOffset - j) * yOffset, 0);
                     initializedChild.transform.SetParent(jewelObjects[j, i].transform);
                     initializedChild.DOLocalMove(Vector3.zero, moveDownTime);
                 }
@@ -303,15 +302,15 @@ public class GameManager : MonoBehaviour {
         {
             if (matchColList.Count == 3)
             {
-                StepAndScore(1);
+                CountingScore(1);
             }
             else if (matchColList.Count == 4)
             {
-                StepAndScore(2);
+                CountingScore(2);
             }
             else if (matchColList.Count == 5)
             {
-                StepAndScore(3);
+                CountingScore(3);
             }
             for (int i = 0; i < matchColList.Count; i++)
             {
@@ -326,15 +325,15 @@ public class GameManager : MonoBehaviour {
         {
             if (matchRowList.Count == 3)
             {
-                StepAndScore(1);
+                CountingScore(1);
             }
             else if (matchRowList.Count == 4)
             {
-                StepAndScore(2);
+                CountingScore(2);
             }
             else if (matchRowList.Count == 5)
             {
-                StepAndScore(3);
+                CountingScore(3);
             }
             for (int i = 0; i < matchRowList.Count; i++)
             {
@@ -348,7 +347,7 @@ public class GameManager : MonoBehaviour {
         else if (matchColList.Count >= 3 && matchRowList.Count >= 3)
         {
             matchRowList.RemoveAt(0);
-            StepAndScore(2);
+            CountingScore(2);
             for (int i = 0; i < matchRowList.Count; i++)
             {
                 needRemoveJewels.Add(matchRowList[i]);
@@ -437,12 +436,16 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void StepAndScore(int param)
+    private void CountingScore(int param)
     {
         _scoreCount += param;
         ScoreText.text = _scoreCount.ToString();
+    }
+
+    private void CountingSteps()
+    {
         StepsCount--;
-        StepsText.text = StepsCount.ToString();
+        StepsText.text = StepsCount.ToString() + "/20";
     }
     
 }
