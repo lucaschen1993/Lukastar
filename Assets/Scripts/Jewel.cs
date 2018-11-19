@@ -14,8 +14,10 @@ public class Jewel : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler,IPo
     private Animator anim;
     private Transform jewelChild;
     private Vector3 jewelChildOrigin; //保存当前Jewel的原始位置
-    public bool isSelected;
+    [SerializeField]
+    private bool isSelected;
     private IEnumerator moveCoroutine;
+    [SerializeField] private bool _isMark;
 
     private void Start()
     {
@@ -23,6 +25,7 @@ public class Jewel : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler,IPo
         jewelChildOrigin = transform.position;
         anim = jewelChild.GetComponent<Animator>();
         isSelected = false;
+        _isMark = false;
         LocationJewelPosition();
     }
     private void Update()
@@ -94,5 +97,24 @@ public class Jewel : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler,IPo
         childObj.transform.SetParent(obj.transform);
         childObj.transform.DOLocalMove(Vector3.zero, GameManager.Instance.moveDownTime);
         yield return new WaitForSeconds(GameManager.Instance.moveDownTime);
+    }
+
+    public bool GetMarkDown()
+    {
+        if (this._isMark)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SetMarkDown(bool mark)
+    {
+        _isMark = mark;
+    }
+
+    public void SetSelectedFalse()
+    {
+        isSelected = false;
     }
 }

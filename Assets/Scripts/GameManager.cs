@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour {
         {
             for (int j = 0; j < colSize; j++)
             {
-                if (jewelObjects[i, j].transform.Find("JewelPicture").gameObject)
+                if (jewelObjects[i, j].transform.Find("JewelPicture").gameObject  && !needRemoveJewels.Contains(jewelObjects[i, j].transform.Find("JewelPicture").gameObject))
                 {
                     MatchJewel(jewelObjects[i, j]);
                 }
@@ -166,9 +166,13 @@ public class GameManager : MonoBehaviour {
         }
         if(needRemoveJewels.Count>0)
         {
+            Debug.Log(needRemoveJewels.Count);
             RemoveJewel();
             StartCoroutine(FillJewels());
         }
+
+        SetMarkDownFalse();
+
     }
 
     //填充宝石的协程
@@ -244,7 +248,8 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(moveDownTime + 0.1f);
         ReMatchGameBorad();
     }
-
+    //重新匹配的方法
+   
     //新的匹配方式
     private bool MatchJewel(GameObject obj)
     {
@@ -254,9 +259,10 @@ public class GameManager : MonoBehaviour {
 
         List<GameObject> matchRowList = new List<GameObject>();
         List<GameObject> matchColList = new List<GameObject>();
+
         matchRowList.Add(obj.transform.Find("JewelPicture").gameObject);
         #region 纵向匹配
-        for (int i = x + 1; i <rowSize; i++)
+        for (int i = x + 1; i < rowSize; i++)   //向下匹配
         {
             if (i < rowSize && Equals(obj.transform.Find("JewelPicture").gameObject.GetComponent<Image>().sprite.name, jewelObjects[i, y].transform.Find("JewelPicture").gameObject.GetComponent<Image>().sprite.name))
             {
@@ -265,7 +271,7 @@ public class GameManager : MonoBehaviour {
             else
                 break;
         }
-        for (int i = x - 1; i >= 0; i--)
+        for (int i = x - 1; i >= 0; i--)    //向上匹配
         {
             if (i >= 0 && Equals(obj.transform.Find("JewelPicture").gameObject.GetComponent<Image>().sprite.name, jewelObjects[i, y].transform.Find("JewelPicture").gameObject.GetComponent<Image>().sprite.name))
             {
@@ -275,9 +281,10 @@ public class GameManager : MonoBehaviour {
                 break;
         }
         #endregion
+
         matchColList.Add(obj.transform.Find("JewelPicture").gameObject);
         #region 横向匹配
-        for (int i = y - 1; i >=0; i--)
+        for (int i = y - 1; i >= 0; i--)
         {
             if (i >= 0 && Equals(obj.transform.Find("JewelPicture").gameObject.GetComponent<Image>().sprite.name, jewelObjects[x, i].transform.Find("JewelPicture").gameObject.GetComponent<Image>().sprite.name))
             {
@@ -286,7 +293,7 @@ public class GameManager : MonoBehaviour {
             else
                 break;
         }
-        for (int i = y + 1; i <colSize; i++)
+        for (int i = y + 1; i < colSize; i++)
         {
             if (i < colSize && Equals(obj.transform.Find("JewelPicture").gameObject.GetComponent<Image>().sprite.name, jewelObjects[x, i].transform.Find("JewelPicture").gameObject.GetComponent<Image>().sprite.name))
             {
@@ -302,15 +309,15 @@ public class GameManager : MonoBehaviour {
         {
             if (matchColList.Count == 3)
             {
-                CountingScore(1);
+                CountingScore(3);
             }
             else if (matchColList.Count == 4)
             {
-                CountingScore(2);
+                CountingScore(4);
             }
             else if (matchColList.Count == 5)
             {
-                CountingScore(3);
+                CountingScore(5);
             }
             for (int i = 0; i < matchColList.Count; i++)
             {
@@ -325,15 +332,15 @@ public class GameManager : MonoBehaviour {
         {
             if (matchRowList.Count == 3)
             {
-                CountingScore(1);
+                CountingScore(3);
             }
             else if (matchRowList.Count == 4)
             {
-                CountingScore(2);
+                CountingScore(4);
             }
             else if (matchRowList.Count == 5)
             {
-                CountingScore(3);
+                CountingScore(5);
             }
             for (int i = 0; i < matchRowList.Count; i++)
             {
@@ -347,7 +354,8 @@ public class GameManager : MonoBehaviour {
         else if (matchColList.Count >= 3 && matchRowList.Count >= 3)
         {
             matchRowList.RemoveAt(0);
-            CountingScore(2);
+            var count = matchColList.Count + matchRowList.Count;
+            CountingScore(count);
             for (int i = 0; i < matchRowList.Count; i++)
             {
                 needRemoveJewels.Add(matchRowList[i]);
@@ -372,6 +380,7 @@ public class GameManager : MonoBehaviour {
         {
             if (needRemoveJewels[i]!= null)
             {
+                //needRemoveJewels[i].transform.parent.gameObject.GetComponent<Jewel>().SetMarkDown(false);
                 needRemoveJewels[i].GetComponent<JewelPicture>().Fade();
                 needRefill = true;
             }
@@ -431,7 +440,7 @@ public class GameManager : MonoBehaviour {
             for(int j =0;j<colSize;j++)
             {
                 jewelObjects[i, j].transform.Find("Select").gameObject.SetActive(false);
-                jewelObjects[i, j].GetComponent<Jewel>().isSelected = false;
+                jewelObjects[i, j].GetComponent<Jewel>().SetSelectedFalse();
             }
         }
     }
@@ -447,6 +456,16 @@ public class GameManager : MonoBehaviour {
         StepsCount--;
         StepsText.text = StepsCount.ToString() + "/20";
     }
-    
+
+    private void SetMarkDownFalse()
+    {
+        for (int i = 0; i < colSize; i++)
+        {
+            for (int j  = 0;  j  < rowSize;  j ++)
+            {
+                jewelObjects[i,j].GetComponent<Jewel>().SetMarkDown(false);
+            }
+        }
+    }
 }
 
